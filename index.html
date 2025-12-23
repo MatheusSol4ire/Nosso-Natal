@@ -29,6 +29,7 @@
       pointer-events: none;
       animation-name: cair;
       animation-timing-function: linear;
+      z-index: 1;
     }
 
     @keyframes cair {
@@ -40,54 +41,70 @@
       background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(6px);
       border-radius: 20px;
-      padding: 24px;
-      max-width: 420px;
-      width: 90%;
+      padding: 20px;
+      max-width: 380px;
+      width: 92%;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       position: relative;
       z-index: 2;
     }
 
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
     }
 
     p {
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
     }
 
     img {
       width: 100%;
-      border-radius: 16px;
-      margin: 16px 0;
+      border-radius: 14px;
+      margin: 10px 0;
     }
 
     button {
       background: #fff;
       color: #b30000;
       border: none;
-      padding: 12px 18px;
+      padding: 10px 16px;
       border-radius: 12px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: bold;
       cursor: pointer;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .contador {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: bold;
       background: rgba(0,0,0,0.25);
-      padding: 12px;
+      padding: 10px;
       border-radius: 12px;
     }
 
     .footer {
-      margin-top: 12px;
-      font-size: 0.85rem;
+      margin-top: 8px;
+      font-size: 0.8rem;
       opacity: 0.85;
+    }
+
+    /* AJUSTE PARA TELAS BAIXAS (CELULAR) */
+    @media (max-height: 700px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .contador {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -112,7 +129,7 @@
 
     <img src="nossa-foto.jpg" alt="Nós dois" />
 
-    <button onclick="tocarMusica()">🎵 Tocar </button>
+    <button onclick="tocarMusica()">🎵 Tocar</button>
 
     <div class="contador" id="contador"></div>
 
