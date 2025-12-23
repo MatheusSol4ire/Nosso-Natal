@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Natal ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #b30000, #5a0000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* NEVE */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 1em;
+      user-select: none;
+      pointer-events: none;
+      animation-name: cair;
+      animation-timing-function: linear;
+    }
+
+    @keyframes cair {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+      margin: 16px 0;
+    }
+
+    button {
+      background: #fff;
+      color: #b30000;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+
+    .contador {
+      font-size: 1.05rem;
+      font-weight: bold;
+      background: rgba(0,0,0,0.25);
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    .footer {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Música -->
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>🎄 Nosso Natal 🎄</h1>
+
+    <p>
+      Meu amor,<br>
+      Sempre vou me esforçar por você e pela gente.
+      Obrigado por existir na minha vida ❤️<br>
+      Estarei contando nossos dias juntos até a eternidade!.<br>
+      Eu te amo ❤️!
+    </p>
+
+    <img src="nossa-foto.jpg" alt="Nós dois" />
+
+    <button onclick="tocarMusica()">🎵 Tocar </button>
+
+    <div class="contador" id="contador"></div>
+
+    <div class="footer">Feito com amor ❤️</div>
+  </div>
+
+  <script>
+    function tocarMusica() {
+      document.getElementById("musica").play();
+    }
+
+    // DATA DO NAMORO (ANO, MÊS-1, DIA, HORA, MINUTO, SEGUNDO)
+    const inicio = new Date(2022, 5, 10, 0, 0, 0);
+
+    function atualizarContador() {
+      const agora = new Date();
+      let diff = Math.floor((agora - inicio) / 1000);
+
+      const dias = Math.floor(diff / 86400);
+      diff %= 86400;
+      const horas = Math.floor(diff / 3600);
+      diff %= 3600;
+      const minutos = Math.floor(diff / 60);
+      const segundos = diff % 60;
+
+      document.getElementById("contador").innerHTML =
+        `Estamos juntos há<br>${dias} dias, ${horas} horas,<br>${minutos} minutos e ${segundos} segundos 💖`;
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
+
+    // GERADOR DE NEVE
+    function criarNeve() {
+      const floco = document.createElement("div");
+      floco.className = "snowflake";
+      floco.innerHTML = "❄";
+      floco.style.left = Math.random() * window.innerWidth + "px";
+      floco.style.fontSize = Math.random() * 12 + 10 + "px";
+      floco.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+      document.body.appendChild(floco);
+
+      setTimeout(() => {
+        floco.remove();
+      }, 10000);
+    }
+
+    setInterval(criarNeve, 300);
+  </script>
+
+</body>
+</html>
